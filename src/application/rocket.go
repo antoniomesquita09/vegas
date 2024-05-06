@@ -47,14 +47,11 @@ func (r *Rocket) Fly(seconds int32) error {
 	}
 
 	for i := range seconds {
-		if r.Status == CRASH {
-			break
-		}
-
 		randNum := rand.IntN(100) + 1
 
 		if randNum < HOUSE_WINS_PERCENT {
 			r.Status = CRASH
+			break
 		}
 
 		expVariation := int32(math.Pow(2, float64(i)))
